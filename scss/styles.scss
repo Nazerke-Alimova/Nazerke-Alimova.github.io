@@ -1,0 +1,511 @@
+$light: #f7f7f7;
+$dark: #222121;
+$lime: #00cc66;
+$orangeRed: #fb4b4e;
+$blue: #2541b2;
+
+
+@mixin tablet {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 390px) {
+    @content;
+  }
+}
+
+
+%align-center {
+  display: flex;
+  align-items: center;
+}
+
+/*----------Header-------*/
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  color: white;
+  filter: blur(5);
+
+  &__container {
+    margin: 20px;
+    width: auto;
+  }
+
+  .navbar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    // padding: 0.5rem calc((80vw - 1200px) / 2);
+    z-index: 10;
+    position: relative;
+
+    &__logo {
+      color: $light;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1rem;
+      @extend %align-center;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+
+    &__name {
+      opacity: 1;
+      width: 150px;
+
+      @include tablet {
+        opacity: 0;
+      }
+    }
+
+    &__name_tablet {
+      opacity: 0;
+
+      @include tablet {
+        opacity: 1;
+        position: absolute;
+        left: 75px;
+      }
+    }
+
+    &__bars {
+      opacity: 0;
+
+      @include tablet {
+        
+        color: white;
+        opacity: 1;
+        position: absolute;
+        top: 22px;
+        right: 93px;
+        font-size: 2rem;
+      }
+      @include mobile{
+        
+        color: white;
+        opacity: 1;
+        position: absolute;
+        top: 22px;
+        right: 10px;
+        font-size: 2rem;
+      }
+    }
+
+    &__menu {
+      @extend %align-center;
+      list-style: none;
+      text-align: center;
+
+      @include tablet {
+        display: none;
+      }
+
+      &--links {
+        color: white;
+        @extend %align-center;
+        justify-content: center;
+        text-decoration: none;
+        padding: 0 2rem;
+
+        &:hover {
+          font-weight: bold;
+          transition: all 0.3s ease;
+        }
+      }
+
+      #button {
+        padding: 12px 24px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        margin-left: 16px;
+        color: white;
+
+        &:hover {
+          background: $orangeRed;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+
+}
+
+
+/*-----------home----------*/
+.home {
+  background: url(../images/bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 5rem;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    align-items: center;
+    justify-items: center;
+    margin: 0 auto;
+    height: 90vh;
+    z-index: 1;
+    width: 100%;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+
+    .img1 {
+      max-width: 100%;
+      height: auto;
+      //position: relative;
+      float: right;
+
+      @include tablet {
+        max-width: 100%;
+      }
+      @include mobile {
+        max-width: 60%;
+      }
+
+    }
+
+    .img2 {
+      height: auto;
+      max-width: 100%;
+      position: absolute;
+      bottom: -25%;
+      left: -50%;
+      @include tablet {
+        max-width: 100%;
+        bottom: -5%;
+        left: 30%;
+      }
+      @include mobile {
+        max-width: 40%;
+        bottom: -5%;
+        left: 30%;
+      }
+    }
+
+    .img3 {
+      height: auto;
+      max-width: 100%;
+      position: absolute;
+      top: 30%;
+      left: -30%;
+      @include tablet {
+        top: 10%;
+        left: 40%;
+      }
+      @include mobile {
+        max-width: 10%;
+      }
+    }
+
+  }
+
+  &__info {
+    width: 100%;
+    margin-top: -70px;
+
+    @include tablet {
+      padding: 5rem 0;
+      padding-top: 10rem;
+      padding-bottom: 5rem;
+    }
+
+    @include mobile {
+      line-height: 1.5;
+    }
+  }
+
+  &__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 6em;
+    line-height: 70%;
+    color: $light;
+
+    @include tablet {
+      line-height: 1;
+    }
+
+    @include mobile {
+      font-size: 5em;
+    }
+  }
+
+  &__text {
+    width: 60%;
+    color: $light;
+    margin-top: 2rem;
+
+    @include tablet {
+      width: 80%;
+    }
+
+    @include mobile {
+      width: 80%;
+    }
+  }
+
+  &__btn {
+    font-size: 0.8rem;
+    background-color: $orangeRed;
+    padding: 10px 32px;
+    border: none;
+    text-transform: uppercase;
+    color: $light;
+    margin-top: 2rem;
+    margin-right: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+    outline: none;
+    @include tablet {
+      width: 80%;
+    }
+
+    @include mobile {
+      width: 80%;
+    }
+
+    a {
+      position: relative;
+      z-index: 2;
+      color: $light;
+      text-decoration: none;
+    }
+
+  }
+
+  &__btn:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: $light;
+    background: $lime;
+    transition: all 0.3s;
+    border-radius: 4px;
+  }
+
+  &__btn:hover:after {
+    width: 100%;
+  }
+
+  //Second Button
+  // &--btn_second {
+  //   font-size: 0.8rem;
+  //   padding: 10px 32px;
+  //   border: 1px solid $light;
+  //   background: none;
+  //   text-transform: uppercase;
+  //   color: $light;
+  //   margin-top: 2rem;
+  //   cursor: pointer;
+  //   position: relative;
+  //   transition: all 0.3s;
+  //   outline: none;
+  // }
+
+  // &--btn_second a {
+  //   position: relative;
+  //   z-index: 2;
+  //   color: $light;
+  //   text-decoration: none;
+  // }
+
+  // &--btn_second:after {
+  //   position: absolute;
+  //   content: '';
+  //   top: 0;
+  //   left: 0;
+  //   width: 0;
+  //   height: 100%;
+  //   background: $orangeRed;
+  //   transition: all 0.3s;
+  //   border-radius: 4px;
+  // }
+
+  // &--btn_second:hover:after {
+  //   width: 100%;
+  // }
+}
+
+
+
+
+
+
+.about {
+  margin-bottom: 5rem;
+  @include tablet{
+  .container-right{
+    padding: 0 16px;}
+  }
+
+  &__container-right {
+    max-width: 1304px;
+    display: grid;
+    grid-template-columns: 60% auto;
+    grid-row: auto auto;
+    grid-column-gap: 275px;
+    grid-row-gap: 79px;
+  }
+
+  &__title {
+    padding-bottom: 40px;
+  }
+
+  &__text {
+
+    .text2,
+    .text3 {
+      padding-bottom: 20px;
+    }
+  }
+
+}
+
+.mentors{
+  background-color:  #EEEEEE;
+  padding: 5rem 0;
+  &__content{
+      display: grid;
+      grid-template-columns: 55% 1fr;
+      gap: 78px;
+      align-items: center;
+      padding-bottom: 5rem;
+  }
+  &__wrapper{  
+      width: 90%;       
+      display: grid;
+      grid-template-columns: 40% 1fr;
+      gap: 78px;
+      .box{
+          display: flex;
+          justify-content: space-between;
+          gap: 2%;
+      }
+      .col{
+          display: grid;
+          gap: 20px
+      }
+
+  }
+}
+
+.enroll{
+  // position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  background-color: black;
+  color: white;
+  margin-bottom: 5rem;
+  &__container{
+      display: block;
+      width: 40%;
+      text-align: center;
+      margin: 0 auto;
+      padding-top: 150px;
+      padding-bottom: 150px;
+      p{
+          padding-bottom: 40px;
+          font-size: 2em;
+          font-weight: 700;
+          list-style: 58px;
+      }
+  }
+}
+
+.blog{
+  margin-bottom: 5rem;
+  &__content{
+      display: grid;
+      grid-template-columns: 55% 1fr;
+      gap: 78px;
+  }
+  &__image{
+      padding-top: 56px;
+      object-fit: cover;
+      object-position: 50% 50%;
+  }
+  &__info{
+      padding-top: 56px;
+      display: grid;
+      grid-template-columns: 30% 40% 20%;
+      gap: 5%;
+      .info_text{
+          text-transform: uppercase;
+          padding-bottom: 24px;
+      }
+      .info_list{
+          list-style:disc;
+      }
+  }
+}
+
+
+
+
+// .footer{
+//   background-color:  #2B2B2B;
+//   background: url(../images/footer_bg.jpg);
+//   &__container{
+//       display: flex;
+//       height: 586px;
+//       align-items: center;
+//   }
+//   &__content{
+//       width: 70%;
+//       height: 70%;
+//       margin: 0 182px;
+//       padding-top: 180px;
+//   }
+//   &__title{
+//       color: white;
+//       padding-bottom: 40px;
+//   }
+//   &__text{
+//       color: white;
+//       padding-bottom: 40px;
+//   }
+//   &__button{
+//       font-size: 0.8em;
+//       padding: 0.5rem 1rem;
+//       color: white;
+//   }
+//   &__end{
+//       display: flex;
+//       justify-content: space-around;
+
+//       .end__text{
+//           padding: 20px 0;
+//           text-transform: uppercase;
+//           color: #BBBBBB;
+//       }
+//   }
+//   .container{
+//     display: flex;
+//   }
+// }
+
+
